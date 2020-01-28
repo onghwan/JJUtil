@@ -5,7 +5,7 @@
 //  Created by jingjing on 1/28/20.
 //
 
-import Foundation
+import UIKit
 
 public struct SectionItemDataSource<S: Equatable, R: Equatable> {
     public var sections = [(section: S, items: [R])]()
