@@ -20,11 +20,11 @@ extension UIActivityIndicatorView.Style {
 }
 
 extension UIView {
-    public func startLoading(_ activityIndicatorStyle: UIActivityIndicatorView.Style = .defaultStyle, center: CGPoint? = nil) {
+    public func showActivityIndicator(style: UIActivityIndicatorView.Style = .defaultStyle, center: CGPoint? = nil) {
         if let activityIndicator = viewIndicators[self] {
             activityIndicator.startAnimating()
         } else {
-            let activityIndicator = UIActivityIndicatorView(style: activityIndicatorStyle)
+            let activityIndicator = UIActivityIndicatorView(style: style)
             if let center = center {
                 activityIndicator.center = center
             } else if let scrollView = self as? UIScrollView {
@@ -39,7 +39,7 @@ extension UIView {
         }
     }
 
-    public func stopLoading() {
+    public func hideActivityIndicator() {
         guard let activityIndicator = viewIndicators[self], activityIndicator.superview == self else { return }
 
         viewIndicators.removeValue(forKey: self)
@@ -47,18 +47,18 @@ extension UIView {
         activityIndicator.removeFromSuperview()
     }
 
-    public var isLoading: Bool {
+    public var isActivityIndicatorAnimating: Bool {
         guard let activityIndicator = viewIndicators[self], activityIndicator.superview == self else { return false }
 
         return activityIndicator.isAnimating
     }
 
-    public func addShadow() {
+    /*public func addShadow() {
         layer.shadowColor = UIColor(white: 0, alpha: 1).cgColor
         layer.shadowOffset = .zero
         layer.shadowRadius = 1.5
         layer.shadowOpacity = 0.15
-    }
+    }*/
 
     public func superview<T>(of type: T.Type) -> T? {
         return superview as? T ?? superview.flatMap { $0.superview(of: type) }
