@@ -53,13 +53,6 @@ extension UIView {
         return activityIndicator.isAnimating
     }
 
-    /*public func addShadow() {
-        layer.shadowColor = UIColor(white: 0, alpha: 1).cgColor
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 1.5
-        layer.shadowOpacity = 0.15
-    }*/
-
     public func superview<T>(of type: T.Type) -> T? {
         return superview as? T ?? superview.flatMap { $0.superview(of: type) }
     }
