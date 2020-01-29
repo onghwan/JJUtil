@@ -111,7 +111,7 @@ extension UIView {
         })
     }
 
-    @discardableResult public func addTopSeparator(color: UIColor, leadingMargin: CGFloat = 0, trailingMargin: CGFloat = 0, separatorWidth: CGFloat = 0.5) -> UIView {
+    @discardableResult public func addTopSeparator(color: UIColor, leadingMargin: CGFloat = 0, trailingMargin: CGFloat = 0, height: CGFloat = 0.5) -> UIView {
         let separator = UIView(frame: .zero)
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = color
@@ -119,11 +119,11 @@ extension UIView {
 
         let views = ["separator": separator]
         NSLayoutConstraint.constraints(withVisualFormat: "|-\(leadingMargin)-[separator]-\(trailingMargin)-|", options: [], metrics: nil, views: views).forEach { $0.isActive = true }
-        NSLayoutConstraint.constraints(withVisualFormat: "V:|[separator(\(separatorWidth))]", options: [], metrics: nil, views: views).forEach { $0.isActive = true }
+        NSLayoutConstraint.constraints(withVisualFormat: "V:|[separator(\(height))]", options: [], metrics: nil, views: views).forEach { $0.isActive = true }
         return separator
     }
 
-    @discardableResult public func addBottomSeparator(color: UIColor, leadingMargin: CGFloat = 0, trailingMargin: CGFloat = 0, separatorWidth: CGFloat = 0.5) -> UIView {
+    @discardableResult public func addBottomSeparator(color: UIColor, leadingMargin: CGFloat = 0, trailingMargin: CGFloat = 0, height: CGFloat = 0.5) -> UIView {
         let separator = UIView(frame: .zero)
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = color
@@ -131,7 +131,7 @@ extension UIView {
 
         let views = ["separator": separator]
         NSLayoutConstraint.constraints(withVisualFormat: "|-\(leadingMargin)-[separator]-\(trailingMargin)-|", options: [], metrics: nil, views: views).forEach { $0.isActive = true }
-        NSLayoutConstraint.constraints(withVisualFormat: "V:[separator(\(separatorWidth))]|", options: [], metrics: nil, views: views).forEach { $0.isActive = true }
+        NSLayoutConstraint.constraints(withVisualFormat: "V:[separator(\(height))]|", options: [], metrics: nil, views: views).forEach { $0.isActive = true }
         return separator
     }
 }
